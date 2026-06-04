@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #0b1026,
+                    #131b46,
+                    #1c1464
+            );
+
+    color:white;
+    padding:40px;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:3rem;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#c5cbff;
+    font-size:18px;
+}
+.top-actions{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:20px;
+}
+
+.dashboard-btn{
+    border:none;
+    padding:14px 25px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #f97316
+        );
+
+    transition:.3s;
+}
+
+.dashboard-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(249,115,22,.4);
+}
+
+.search-box{
+
+    background:
+            rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid
+    rgba(255,255,255,0.1);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:40px;
+}
+
+.search-box input{
+
+    flex:1;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+            rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.search-box input::placeholder{
+    color:#c8ceff;
+}
+
+.search-box button{
+
+    border:none;
+
+    padding:18px 30px;
+
+    border-radius:15px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #6c63ff,
+                    #8f7cff
+            );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.search-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+            0 12px 25px
+            rgba(108,99,255,.4);
+}
+
+#jobResults{
+
+    display:grid;
+
+    grid-template-columns:
+            repeat(auto-fit,minmax(350px,1fr));
+
+    gap:25px;
+}
+
+.job-card{
+
+    background:
+            rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid
+    rgba(255,255,255,0.1);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    transition:0.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.job-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    #6c63ff,
+                    #00d4ff
+            );
+}
+
+.job-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+            0 15px 35px
+            rgba(0,0,0,.35);
+}
+
+.logo{
+
+    width:70px;
+    height:70px;
+
+    object-fit:contain;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:10px;
+
+    margin-bottom:15px;
+}
+
+.job-card h2{
+
+    font-size:22px;
+
+    margin-bottom:8px;
+
+    color:white;
+}
+
+.company{
+
+    color:#8fa1ff;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+}
+
+.job-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+    color:#dce0ff;
+}
+
+.apply-btn{
+
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-weight:600;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #6c63ff,
+                    #8f7cff
+            );
+
+    transition:0.3s;
+}
+
+.apply-btn:hover{
+
+    transform:scale(1.02);
+}
+
+.loading{
+
+    text-align:center;
+
+    font-size:20px;
+
+    padding:50px;
+}
+
+.no-jobs{
+
+    text-align:center;
+
+    padding:60px;
+
+    border-radius:25px;
+
+    background:
+            rgba(255,255,255,0.08);
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .header h1{
+        font-size:2.2rem;
+    }
+}

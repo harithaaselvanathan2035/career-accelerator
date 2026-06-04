@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CareerAI Jobs</title>
+
+    <link rel="stylesheet"
+          href="/css/jobs.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="top-actions">
+            <button class="dashboard-btn"
+                    onclick="goDashboard()">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </button>
+        </div>
+
+        <h1>
+            🚀 CareerAI Job Finder
+        </h1>
+
+        <p>
+            Discover Real-Time Jobs Powered by AI
+        </p>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+                type="text"
+                id="jobQuery"
+                placeholder="Enter Job Title">
+
+        <input
+                type="text"
+                id="jobLocation"
+                placeholder="Enter Location">
+
+        <button onclick="searchJobs()">
+            <i class="fas fa-search"></i>
+            Search Jobs
+        </button>
+
+    </div>
+
+    <div id="jobResults"></div>
+
+</div>
+
+<script src="/js/jobs.js"></script>
+
+</body>
+</html>

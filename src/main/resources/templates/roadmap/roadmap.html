@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Roadmap</title>
+
+    <link rel="stylesheet"
+          href="/css/roadmap.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Career Accelerator
+    </div>
+
+    <button class="dashboard-btn"
+            onclick="window.location.href='/dashboard'">
+
+        Dashboard
+
+    </button>
+
+</nav>
+
+<section class="hero">
+
+    <h1>
+        AI Career Roadmap Generator
+    </h1>
+
+    <p>
+        Get a personalized learning path
+        for your dream career.
+    </p>
+
+</section>
+
+<div class="container">
+
+    <div class="form-card">
+
+        <h2>Create Roadmap</h2>
+
+        <select id="role">
+
+            <option>Java Full Stack Developer</option>
+            <option>Python Developer</option>
+            <option>Data Analyst</option>
+
+        </select>
+
+        <select id="level">
+
+            <option>Beginner</option>
+            <option>Intermediate</option>
+
+        </select>
+
+        <button onclick="generateRoadmap()">
+
+            Generate Roadmap
+
+        </button>
+
+    </div>
+
+    <div id="roadmapResult">
+
+    </div>
+
+</div>
+
+<script src="/js/roadmap.js"></script>
+
+</body>
+
+</html>

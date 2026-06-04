@@ -1,0 +1,223 @@
+// ===============================
+// Career Accelerator Roadmap JS
+// ===============================
+
+async function generateRoadmap() {
+
+    const role =
+        document.getElementById("role").value;
+
+    const level =
+        document.getElementById("level").value;
+
+    const roadmapContainer =
+        document.getElementById("roadmapResult");
+
+    roadmapContainer.innerHTML = `
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            <p>
+                Generating your personalized roadmap...
+            </p>
+
+        </div>
+
+    `;
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/roadmap/generate",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        role: role,
+
+                        level: level,
+
+                        experience: 0
+
+                    })
+                }
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to generate roadmap"
+            );
+        }
+
+        const data =
+            await response.json();
+
+        let html = `
+
+            <div class="roadmap-header">
+
+                <h2>
+
+                    ${data.title}
+
+                </h2>
+
+                <p>
+
+                    Personalized learning path
+                    for ${role}
+
+                </p>
+
+            </div>
+
+            <div class="progress-section">
+
+                <div class="progress-info">
+
+                    <span>
+                        Progress
+                    </span>
+
+                    <span>
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        if (
+            data.roadmap &&
+            data.roadmap.length > 0
+        ) {
+
+            data.roadmap.forEach(
+                (step, index) => {
+
+                    html += `
+
+                    <div class="step">
+
+                        <div class="step-number">
+
+                            ${index + 1}
+
+                        </div>
+
+                        <div class="step-content">
+
+                            <h3>
+
+                                ${step}
+
+                            </h3>
+
+                            <p>
+
+                                Complete this phase
+                                and master the required
+                                concepts before moving
+                                to the next level.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    `;
+                }
+            );
+
+        } else {
+
+            html += `
+
+                <div class="error-box">
+
+                    No roadmap found.
+
+                </div>
+
+            `;
+        }
+
+        roadmapContainer.innerHTML =
+            html;
+
+        roadmapContainer.scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+        roadmapContainer.innerHTML = `
+
+            <div class="error-box">
+
+                <h3>
+
+                    Error
+
+                </h3>
+
+                <p>
+
+                    Unable to generate roadmap.
+                    Please try again.
+
+                </p>
+
+            </div>
+
+        `;
+    }
+}
+
+// ===============================
+// Dashboard Button
+// ===============================
+
+function goDashboard() {
+
+    window.location.href =
+        "/dashboard";
+}
+
+// ===============================
+// Auto Focus Animation
+// ===============================
+
+window.onload = () => {
+
+    const role =
+        document.getElementById("role");
+
+    if (role) {
+
+        role.focus();
+    }
+};

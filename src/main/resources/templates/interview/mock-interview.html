@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Interview</title>
+
+    <link rel="stylesheet" href="/css/mock-interview.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>AI Mock Interview</h1>
+
+    <!-- Interview Setup -->
+    <div class="setup-section">
+
+        <label>Domain</label>
+        <select id="domain">
+
+            <option value="Java">Java</option>
+
+            <option value="Python">Python</option>
+
+            <option value="JavaScript">JavaScript</option>
+
+            <option value="Spring Boot">Spring Boot</option>
+
+        </select>
+
+        <label>Difficulty</label>
+        <select id="difficulty">
+
+            <option value="Easy">Easy</option>
+
+            <option value="Medium">Medium</option>
+
+            <option value="Hard">Hard</option>
+
+        </select>
+
+        <label>Number of Questions</label>
+        <select id="questionCount">
+
+            <option value="1">1</option>
+
+            <option value="2">2</option>
+
+            <option value="3">3</option>
+
+            <option value="5">5</option>
+
+        </select>
+
+        <button onclick="startInterview()">
+            Start Interview
+        </button>
+
+    </div>
+
+    <!-- Interview Area -->
+    <div class="interview-section">
+
+        <h2 id="questionNumber">
+            Question 0 / 0
+        </h2>
+
+        <div id="questionText">
+            Click Start Interview
+        </div>
+
+        <div class="timer-box">
+            Time Left:
+            <span id="timer">60</span>s
+        </div>
+
+        <textarea
+                id="answerBox"
+                rows="8"
+                placeholder="Type your answer here...">
+        </textarea>
+
+        <br><br>
+
+        <button onclick="startVoice()">
+            🎤 Voice Input
+        </button>
+
+        <button onclick="evaluateAnswer()">
+            Evaluate Answer
+        </button>
+
+        <button onclick="nextQuestion()">
+            Next Question
+        </button>
+
+        <button onclick="goDashboard()">
+            Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+<script src="/js/mock-interview.js"></script>
+
+</body>
+</html>

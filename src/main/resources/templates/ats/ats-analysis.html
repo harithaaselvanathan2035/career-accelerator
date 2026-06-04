@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CareerAI ATS Analyzer</title>
+
+    <link rel="stylesheet"
+          href="/css/ats-analysis.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+    </script>
+
+</head>
+
+<body>
+<nav class="navbar">
+
+    <div class="logo">
+        Career Accelerator
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/resume-builder">
+            Resume
+        </a>
+
+        <a href="/ats-analysis">
+            ATS
+        </a>
+
+        <a href="/interview">
+            Interview
+        </a>
+
+        <a href="/jobs">
+            Jobs
+        </a>
+
+        <a href="/roadmap">
+            Roadmap
+        </a>
+
+        <a href="/analytics">
+            Analytics
+        </a>
+
+        <a href="/profile">
+            Profile
+        </a>
+
+    </div>
+
+</nav>
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <button class="dashboard-btn"
+                onclick="goDashboard()">
+
+            ⬅ Dashboard
+
+        </button>
+
+        <div>
+            <h1>ATS Resume Analyzer</h1>
+
+            <p class="subtitle">
+
+                AI Powered Resume Analysis & ATS Optimization
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- UPLOAD SECTION -->
+
+    <div class="upload-container">
+
+        <input type="file"
+               id="resumeInput"
+               accept="application/pdf">
+
+        <label for="resumeInput"
+               class="file-upload">
+
+            📄 Choose Resume
+
+        </label>
+
+        <button class="analyze-btn"
+                onclick="analyzeResume()">
+
+            Analyze Resume
+
+        </button>
+
+    </div>
+
+    <p id="fileName"></p>
+
+    <div id="loading">
+
+        🔍 Analyzing Resume...
+
+    </div>
+
+    <!-- SCORE CARDS -->
+
+    <div class="score-grid">
+
+        <div class="score-card">
+
+            <h4>ATS Score</h4>
+
+            <h1 id="atsScore">
+
+                0%
+
+            </h1>
+
+        </div>
+
+        <div class="score-card">
+
+            <h4>Skills Match</h4>
+
+            <h1 id="skillsScore">
+
+                0%
+
+            </h1>
+
+        </div>
+
+        <div class="score-card">
+
+            <h4>Projects Score</h4>
+
+            <h1 id="projectScore">
+
+                0%
+
+            </h1>
+
+        </div>
+
+        <div class="score-card">
+
+            <h4>Resume Strength</h4>
+
+            <h1 id="strengthScore">
+
+                0%
+
+            </h1>
+
+        </div>
+
+    </div>
+
+    <!-- CHARTS -->
+
+    <div class="chart-grid">
+
+        <div class="glass-card">
+
+            <h3>ATS Score</h3>
+
+            <canvas id="scoreChart"></canvas>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Section Analysis</h3>
+
+            <canvas id="sectionChart"></canvas>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Resume Radar</h3>
+
+            <canvas id="radarChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- BOTTOM CARDS -->
+
+    <div class="bottom-grid">
+
+        <div class="glass-card">
+
+            <h3>Detected Skills</h3>
+
+            <div id="skills"></div>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Missing ATS Keywords</h3>
+
+            <div id="missing"></div>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Formatting Feedback</h3>
+
+            <div id="feedback"></div>
+
+        </div>
+
+    </div>
+
+    <!-- AI SUMMARY -->
+
+    <div class="summary-card">
+
+        <h2>
+
+            AI Professional Summary
+
+        </h2>
+
+        <p id="analysis">
+
+            Upload a resume to get ATS insights.
+
+        </p>
+
+    </div>
+
+</div>
+
+<script src="/js/ats-analysis.js"></script>
+
+</body>
+
+</html>

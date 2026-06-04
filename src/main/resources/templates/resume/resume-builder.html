@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CareerAI Resume Builder</title>
+
+    <link rel="stylesheet"
+          href="/css/resume-builder.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <button
+            class="dashboard-btn"
+            onclick="goDashboard()">
+
+        ⬅ Dashboard
+
+    </button>
+
+    <div>
+
+        <button
+                class="save-btn"
+                onclick="saveResume()">
+
+            💾 Save
+
+        </button>
+
+        <button
+                class="download-btn"
+                onclick="downloadResume()">
+
+            📥 Download PDF
+
+        </button>
+
+        <button
+                class="clear-btn"
+                onclick="clearResume()">
+
+            🗑 Clear
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="builder-container">
+
+    <!-- LEFT FORM -->
+
+    <div class="form-section">
+
+        <h2>
+
+            Resume Details
+
+        </h2>
+
+        <label>
+
+            Profile Photo
+
+        </label>
+
+        <input
+                type="file"
+                id="photoUpload"
+                accept="image/*">
+
+        <input
+                type="text"
+                id="fullName"
+                placeholder="Full Name">
+
+        <input
+                type="email"
+                id="email"
+                placeholder="Email">
+
+        <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number">
+
+        <input
+                type="text"
+                id="linkedin"
+                placeholder="LinkedIn">
+
+        <input
+                type="text"
+                id="github"
+                placeholder="GitHub">
+
+        <input
+                type="text"
+                id="location"
+                placeholder="Location">
+
+        <textarea
+                id="summary"
+                placeholder="About Yourself"></textarea>
+
+        <textarea
+                id="education"
+                placeholder="Education"></textarea>
+
+        <textarea
+                id="skills"
+                placeholder="Skills"></textarea>
+
+        <textarea
+                id="certifications"
+                placeholder="Certifications"></textarea>
+
+        <textarea
+                id="projects"
+                placeholder="Projects"></textarea>
+
+        <textarea
+                id="activities"
+                placeholder="Extracurricular Activities"></textarea>
+
+    </div>
+
+    <!-- RIGHT PREVIEW -->
+
+    <div class="preview-section">
+
+        <div id="resumePreview">
+
+            <!-- HEADER -->
+
+            <div class="resume-header">
+
+                <div class="photo">
+
+                    <img
+                            id="previewImage"
+                            src=""
+                            alt="Profile">
+
+                </div>
+
+                <div class="header-info">
+
+                    <h1 id="pName">
+
+                        XXXX YYYY
+
+                    </h1>
+
+                    <div id="pContact">
+
+                        email@example.com
+                        <br>
+                        +91 XXXXX XXXXX
+
+                    </div>
+
+                    <div id="pGithub">
+
+                        github.com/username
+
+                    </div>
+
+                    <div id="pLinkedin">
+
+                        linkedin.com/in/username
+
+                    </div>
+
+                    <div id="pLocation">
+
+                        Chennai, India
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ABOUT -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    ABOUT
+
+                </h2>
+
+                <p id="pSummary">
+
+                    Write your professional summary here...
+
+                </p>
+
+            </div>
+
+            <!-- EDUCATION -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    EDUCATION
+
+                </h2>
+
+                <p id="pEducation">
+
+                    Enter your education details...
+
+                </p>
+
+            </div>
+
+            <!-- SKILLS -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    SKILLS
+
+                </h2>
+
+                <p id="pSkills">
+
+                    Enter your skills...
+
+                </p>
+
+            </div>
+
+            <!-- CERTIFICATIONS -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    CERTIFICATIONS
+
+                </h2>
+
+                <p id="pCertifications">
+
+                    Enter certifications...
+
+                </p>
+
+            </div>
+
+            <!-- PROJECTS -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    PROJECTS
+
+                </h2>
+
+                <p id="pProjects">
+
+                    Enter project details...
+
+                </p>
+
+            </div>
+
+            <!-- ACTIVITIES -->
+
+            <div class="resume-section">
+
+                <h2>
+
+                    EXTRACURRICULAR ACTIVITIES
+
+                </h2>
+
+                <p id="pActivities">
+
+                    Enter extracurricular activities...
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/resume-builder.js"></script>
+
+</body>
+</html>
+

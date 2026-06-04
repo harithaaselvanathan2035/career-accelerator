@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Resume</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+        min-height:100vh;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background:
+        linear-gradient(
+        135deg,
+        #0f172a,
+        #1e1b4b,
+        #312e81
+        );
+
+        padding:20px;
+        }
+
+        .container{
+
+        width:100%;
+        max-width:700px;
+
+        background:
+        rgba(255,255,255,0.08);
+
+        backdrop-filter:blur(20px);
+
+        padding:40px;
+
+        border-radius:25px;
+
+        box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+
+        color:white;
+        }
+
+        h1{
+
+        font-size:40px;
+
+        margin-bottom:10px;
+
+        text-align:center;
+        }
+
+        .subtitle{
+
+        text-align:center;
+
+        opacity:.8;
+
+        margin-bottom:40px;
+        }
+
+        .upload-box{
+
+        border:3px dashed
+        rgba(255,255,255,.2);
+
+        padding:50px;
+
+        border-radius:20px;
+
+        text-align:center;
+
+        cursor:pointer;
+
+        transition:.3s;
+        }
+
+        .upload-box:hover{
+
+        border-color:#6366f1;
+
+        transform:translateY(-3px);
+        }
+
+        .upload-icon{
+
+        font-size:70px;
+
+        margin-bottom:15px;
+        }
+
+        .upload-title{
+
+        font-size:28px;
+
+        font-weight:700;
+        }
+
+        .upload-sub{
+
+        opacity:.8;
+        }
+
+        input[type=file]{
+
+        display:none;
+        }
+
+        .file-name{
+
+        margin-top:25px;
+
+        text-align:center;
+
+        font-weight:600;
+        }
+
+        .buttons{
+
+        display:flex;
+
+        gap:15px;
+
+        margin-top:30px;
+        }
+
+        button{
+
+        flex:1;
+
+        padding:15px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:16px;
+
+        font-weight:600;
+
+        cursor:pointer;
+
+        transition:.3s;
+        }
+
+        .parse-btn{
+
+        background:#6366f1;
+
+        color:white;
+        }
+
+        .parse-btn:hover{
+
+        background:#4f46e5;
+        }
+
+        .back-btn{
+
+        background:#334155;
+
+        color:white;
+        }
+
+        .back-btn:hover{
+
+        background:#1e293b;
+        }
+
+        .loader{
+
+        display:none;
+
+        margin-top:25px;
+
+        text-align:center;
+        }
+
+        .spinner{
+
+        width:50px;
+        height:50px;
+
+        border:5px solid
+        rgba(255,255,255,.2);
+
+        border-top:5px solid
+        #6366f1;
+
+        border-radius:50%;
+
+        animation:spin 1s linear infinite;
+
+        margin:auto;
+        }
+
+        @keyframes spin{
+
+        100%{
+        transform:rotate(360deg);
+        }
+        }
+
+        .loader p{
+
+        margin-top:15px;
+        }
+
+        .success{
+
+        display:none;
+
+        text-align:center;
+
+        margin-top:20px;
+
+        color:#22c55e;
+
+        font-weight:700;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 Upload Resume</h1>
+
+    <p class="subtitle">
+
+        Upload your PDF Resume and
+        Auto Fill Resume Builder
+
+    </p>
+
+    <label
+            for="resumeFile">
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+
+                ☁️
+
+            </div>
+
+            <div class="upload-title">
+
+                Upload Resume
+
+            </div>
+
+            <div class="upload-sub">
+
+                Drag & Drop or Click Here
+
+            </div>
+
+        </div>
+
+    </label>
+
+    <input
+            type="file"
+            id="resumeFile"
+            accept=".pdf">
+
+    <div
+            class="file-name"
+            id="fileName">
+
+        No file selected
+
+    </div>
+
+    <div class="buttons">
+
+        <button
+                class="parse-btn"
+                onclick="uploadResume()">
+
+            ✨ Parse Resume
+
+        </button>
+
+        <button
+                class="back-btn"
+                onclick="goDashboard()">
+
+            ⬅ Dashboard
+
+        </button>
+
+    </div>
+
+    <div class="loader"
+         id="loader">
+
+        <div class="spinner"></div>
+
+        <p>
+
+            Parsing Resume...
+
+        </p>
+
+    </div>
+
+    <div
+            class="success"
+            id="successMsg">
+
+        ✅ Resume Parsed Successfully
+
+    </div>
+
+</div>
+
+<script>
+
+    const fileInput =
+    document.getElementById(
+    "resumeFile"
+    );
+
+    fileInput.addEventListener(
+    "change",
+    function(){
+
+    if(this.files.length>0){
+
+    document.getElementById(
+    "fileName"
+    ).innerText=
+    this.files[0].name;
+    }
+
+    }
+    );
+
+    async function uploadResume(){
+
+    const file=
+    document.getElementById(
+    "resumeFile"
+    ).files[0];
+
+    if(!file){
+
+    alert(
+    "Please select a PDF Resume"
+    );
+
+    return;
+    }
+
+    const formData=
+    new FormData();
+
+    formData.append(
+    "file",
+    file
+    );
+
+    document.getElementById(
+    "loader"
+    ).style.display=
+    "block";
+
+    try{
+
+    const response=
+    await fetch(
+    "/api/resume/upload",
+    {
+    method:"POST",
+    body:formData
+    }
+    );
+
+    const data=
+    await response.json();
+
+    localStorage.setItem(
+    "parsedResume",
+    JSON.stringify(data)
+    );
+
+    document.getElementById(
+    "loader"
+    ).style.display=
+    "none";
+
+    document.getElementById(
+    "successMsg"
+    ).style.display=
+    "block";
+
+    setTimeout(()=>{
+
+    window.location.href=
+    "/resume-builder";
+
+    },1500);
+
+    }
+    catch(error){
+
+    console.error(error);
+
+    document.getElementById(
+    "loader"
+    ).style.display=
+    "none";
+
+    alert(
+    "Resume Parsing Failed"
+    );
+    }
+
+    }
+
+    function goDashboard(){
+
+    window.location.href=
+    "/dashboard";
+    }
+
+</script>
+
+</body>
+</html>
+```

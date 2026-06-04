@@ -1,0 +1,248 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    background:#f4f7fc;
+
+    min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    height:75px;
+
+    background:#111827;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 50px;
+
+    color:white;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.logo{
+
+    font-size:24px;
+
+    font-weight:700;
+}
+
+.dashboard-btn{
+
+    background:#4f46e5;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.dashboard-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+
+    text-align:center;
+
+    padding:60px 20px;
+}
+
+.hero h1{
+
+    font-size:48px;
+
+    color:#111827;
+
+    margin-bottom:15px;
+}
+
+.hero p{
+
+    color:#6b7280;
+
+    font-size:18px;
+}
+
+/* CONTAINER */
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:20px;
+}
+
+/* FORM CARD */
+
+.form-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    margin-bottom:40px;
+}
+
+.form-card h2{
+
+    margin-bottom:20px;
+
+    color:#111827;
+}
+
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    font-size:15px;
+}
+
+.form-card button{
+
+    width:100%;
+
+    background:#4f46e5;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.form-card button:hover{
+
+    background:#4338ca;
+}
+
+/* ROADMAP */
+
+#roadmapResult{
+
+    position:relative;
+
+    padding-left:40px;
+}
+
+#roadmapResult::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:15px;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:#4f46e5;
+}
+
+.roadmap-title{
+
+    margin-bottom:25px;
+
+    color:#111827;
+}
+
+.step{
+
+    position:relative;
+
+    background:white;
+
+    margin-bottom:20px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.step:hover{
+
+    transform:translateX(8px);
+}
+
+.step::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-34px;
+
+    top:25px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#4f46e5;
+}
+
+.step h3{
+
+    color:#111827;
+
+    margin-bottom:8px;
+}
+
+.step p{
+
+    color:#6b7280;
+}

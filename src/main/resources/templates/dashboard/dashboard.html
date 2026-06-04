@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerAI Dashboard</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>🚀 CareerAI</h2>
+    </div>
+
+    <ul>
+        <li class="active" onclick="window.location.href='/dashboard'">
+            <i class="fas fa-house"></i> Dashboard
+        </li>
+
+        <li onclick="window.location.href='/resume-builder'">
+            <i class="fas fa-file"></i> Resume Builder
+        </li>
+
+        <li onclick="window.location.href='/resume/upload'">
+            <i class="fas fa-upload"></i> Upload Resume
+        </li>
+
+        <li onclick="window.location.href='/ats-analysis'">
+            <i class="fas fa-chart-line"></i> ATS Analysis
+        </li>
+
+        <li onclick="window.location.href='/interview'">
+            <i class="fas fa-microphone"></i> Mock Interview
+        </li>
+
+        <li onclick="window.location.href='/jobs'">
+            <i class="fas fa-briefcase"></i> Jobs
+        </li>
+
+        <li onclick="window.location.href='/roadmap'">
+            <i class="fas fa-road"></i> Roadmap
+        </li>
+
+        <li onclick="window.location.href='/profile'">
+            <i class="fas fa-user"></i> Profile
+        </li>
+
+        <li onclick="window.location.href='/login'">
+            <i class="fas fa-right-from-bracket"></i> Logout
+        </li>
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+        <h1>
+            Welcome
+            <span th:text="${userName}">User</span>
+            👋
+        </h1>
+
+        <button id="themeBtn">🌙</button>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Career Score</h3>
+            <h1>95%</h1>
+        </div>
+
+        <div class="card">
+            <h3>ATS Score</h3>
+            <h1>87%</h1>
+        </div>
+
+        <div class="card">
+            <h3>Interview Ready</h3>
+            <h1>82%</h1>
+        </div>
+
+        <div class="card">
+            <h3>Job Match</h3>
+            <h1>91%</h1>
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        <div class="glass">
+            <h2>Career Progress</h2>
+            <div class="chart-box">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+
+        <div class="glass">
+            <h2>Learning Roadmap</h2>
+            <div class="chart-box">
+                <canvas id="roadmapChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/dashboard.js"></script>
+
+</body>
+</html>

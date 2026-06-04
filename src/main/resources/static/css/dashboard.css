@@ -1,0 +1,268 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    background:#071229;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+
+.sidebar{
+    width:320px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    background:linear-gradient(
+        180deg,
+        #101b35,
+        #08142d
+    );
+    border-right:1px solid rgba(255,255,255,.1);
+    overflow-y:auto;
+    padding:30px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.logo h2{
+    color:#60a5fa;
+    font-size:52px;
+    font-weight:700;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px 20px;
+    margin-bottom:12px;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.sidebar li i{
+    width:30px;
+    text-align:center;
+    font-size:22px;
+}
+
+.sidebar li:hover{
+    background:#3b82f6;
+    transform:translateX(5px);
+}
+
+.sidebar li.active{
+    background:#3b82f6;
+}
+
+/* =======================
+   MAIN
+======================= */
+
+.main{
+    margin-left:320px;
+    width:calc(100% - 320px);
+    min-height:100vh;
+    padding:30px;
+    overflow-y:auto;
+}
+
+/* =======================
+   TOPBAR
+======================= */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.topbar h1{
+    font-size:48px;
+    font-weight:700;
+}
+
+.topbar span{
+    color:#60a5fa;
+}
+
+#themeBtn{
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* =======================
+   CARDS
+======================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    padding:30px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#d1d5db;
+    margin-bottom:15px;
+}
+
+.card h1{
+    color:#60a5fa;
+    font-size:55px;
+}
+
+/* =======================
+   CHARTS
+======================= */
+
+.chart-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    margin-top:20px;
+}
+
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    padding:25px;
+}
+
+.glass h2{
+    color:#60a5fa;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+canvas{
+    width:100% !important;
+    height:400px !important;
+}
+
+/* =======================
+   SCROLLBAR
+======================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3b82f6;
+    border-radius:10px;
+}
+
+/* =======================
+   DARK MODE
+======================= */
+
+.dark-mode{
+    background:#f5f5f5;
+    color:#111827;
+}
+
+.dark-mode .sidebar{
+    background:white;
+}
+
+.dark-mode .card,
+.dark-mode .glass{
+    background:white;
+    color:black;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media(max-width:1200px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .chart-container{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        width:90px;
+        padding:20px 10px;
+    }
+
+    .logo h2{
+        font-size:18px;
+    }
+
+    .sidebar li{
+        justify-content:center;
+        font-size:0;
+    }
+
+    .sidebar li i{
+        font-size:20px;
+    }
+
+    .main{
+        margin-left:90px;
+        width:calc(100% - 90px);
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .topbar h1{
+        font-size:30px;
+    }
+}
