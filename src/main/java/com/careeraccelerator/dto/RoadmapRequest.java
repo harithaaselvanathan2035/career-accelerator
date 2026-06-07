@@ -1,13 +1,23 @@
 package com.careeraccelerator.dto;
 
-import lombok.Data;
-
-@Data
 public class RoadmapRequest {
 
-    private String role;
-
+    private String domain;
     private String level;
 
-    private int experience;
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 }

@@ -3,24 +3,29 @@ package com.careeraccelerator.controller;
 import com.careeraccelerator.dto.RoadmapRequest;
 import com.careeraccelerator.dto.RoadmapResponse;
 import com.careeraccelerator.service.RoadmapService;
-
-import lombok.RequiredArgsConstructor;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/roadmap")
-@RequiredArgsConstructor
+@CrossOrigin("*")
 public class RoadmapController {
 
-    private final RoadmapService roadmapService;
+    @Autowired
+    private RoadmapService roadmapService;
 
     @PostMapping("/generate")
-    public RoadmapResponse generateRoadmap(
+    public ResponseEntity<?> generateRoadmap(
             @RequestBody RoadmapRequest request) {
 
-        return roadmapService.generateRoadmap(
-                request
+        return ResponseEntity.ok(
+                new RoadmapResponse(
+                        roadmapService.generateRoadmap(
+                                request.getDomain(),
+                                request.getLevel()
+                        )
+                )
         );
     }
 }

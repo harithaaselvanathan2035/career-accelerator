@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class InterviewPageController {
 
-    @GetMapping("/mock-interview")
-    public String interviewPage(){
-
+    @GetMapping("/interview")
+    public String interviewPage() {
         return "interview/mock-interview";
     }
 }

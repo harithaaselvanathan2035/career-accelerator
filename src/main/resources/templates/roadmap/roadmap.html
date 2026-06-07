@@ -42,8 +42,7 @@
     </h1>
 
     <p>
-        Get a personalized learning path
-        for your dream career.
+        Generate a roadmap for any career domain.
     </p>
 
 </section>
@@ -54,18 +53,16 @@
 
         <h2>Create Roadmap</h2>
 
-        <select id="role">
-
-            <option>Java Full Stack Developer</option>
-            <option>Python Developer</option>
-            <option>Data Analyst</option>
-
-        </select>
+        <input
+                type="text"
+                id="role"
+                placeholder="Enter Domain (Example: AI Engineer, Data Science, DevOps, Cyber Security)">
 
         <select id="level">
 
             <option>Beginner</option>
             <option>Intermediate</option>
+            <option>Advanced</option>
 
         </select>
 
@@ -77,14 +74,11 @@
 
     </div>
 
-    <div id="roadmapResult">
-
-    </div>
+    <div id="roadmapResult"></div>
 
 </div>
 
 <script src="/js/roadmap.js"></script>
 
 </body>
-
 </html>

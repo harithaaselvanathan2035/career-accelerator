@@ -1,103 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Interview</title>
 
-    <link rel="stylesheet" href="/css/mock-interview.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Mock Interview</title>
+
+    <link rel="stylesheet"
+          href="/css/mock-interview.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>AI Mock Interview</h1>
+    <!-- HEADER -->
 
-    <!-- Interview Setup -->
-    <div class="setup-section">
+    <div class="header">
 
-        <label>Domain</label>
-        <select id="domain">
+        <h1>
+            🤖 AI Mock Interview Simulator
+        </h1>
 
-            <option value="Java">Java</option>
-
-            <option value="Python">Python</option>
-
-            <option value="JavaScript">JavaScript</option>
-
-            <option value="Spring Boot">Spring Boot</option>
-
-        </select>
-
-        <label>Difficulty</label>
-        <select id="difficulty">
-
-            <option value="Easy">Easy</option>
-
-            <option value="Medium">Medium</option>
-
-            <option value="Hard">Hard</option>
-
-        </select>
-
-        <label>Number of Questions</label>
-        <select id="questionCount">
-
-            <option value="1">1</option>
-
-            <option value="2">2</option>
-
-            <option value="3">3</option>
-
-            <option value="5">5</option>
-
-        </select>
-
-        <button onclick="startInterview()">
-            Start Interview
-        </button>
+        <p>
+            Practice with AI and improve your interview performance
+        </p>
 
     </div>
 
-    <!-- Interview Area -->
-    <div class="interview-section">
+    <!-- SETUP PANEL -->
 
-        <h2 id="questionNumber">
-            Question 0 / 0
-        </h2>
+    <div class="setup-section">
 
-        <div id="questionText">
-            Click Start Interview
+        <div class="field">
+
+            <label>
+                Domain
+            </label>
+
+            <select id="domain">
+
+                <option value="Java">
+                    Java
+                </option>
+
+                <option value="Spring Boot">
+                    Spring Boot
+                </option>
+
+                <option value="SQL">
+                    SQL
+                </option>
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="Full Stack">
+                    Full Stack
+                </option>
+
+                <option value="DSA">
+                    DSA
+                </option>
+
+                <option value="AI/ML">
+                    AI / ML
+                </option>
+
+                <option value="DevOps">
+                    DevOps
+                </option>
+
+                <option value="Cyber Security">
+                    Cyber Security
+                </option>
+
+            </select>
+
         </div>
 
-        <div class="timer-box">
-            Time Left:
-            <span id="timer">60</span>s
+        <div class="field">
+
+            <label>
+                Difficulty
+            </label>
+
+            <select id="difficulty">
+
+                <option value="Beginner">
+                    Beginner
+                </option>
+
+                <option value="Intermediate">
+                    Intermediate
+                </option>
+
+                <option value="Advanced">
+                    Advanced
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Questions
+            </label>
+
+            <select id="questionCount">
+
+                <option value="1">1</option>
+
+                <option value="3">3</option>
+
+                <option value="5">5</option>
+
+                <option value="10">10</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <button onclick="startInterview()">
+
+                🚀 Start Interview
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h4>
+                Question
+            </h4>
+
+            <h2 id="questionNumber">
+
+                0 / 0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+                Score
+            </h4>
+
+            <h2 id="liveScore">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+                Timer
+            </h4>
+
+            <h2 id="timer">
+
+                60
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- PROGRESS -->
+
+    <div class="progress-container">
+
+        <div id="progressBar"></div>
+
+    </div>
+
+    <!-- INTERVIEW PANEL -->
+
+    <div class="interview-section">
+
+        <div class="ai-panel">
+
+            <div class="avatar">
+
+                🤖
+
+            </div>
+
+            <div class="question-card">
+
+                <h3>
+                    AI Interviewer
+                </h3>
+
+                <p id="questionText">
+
+                    Click Start Interview
+
+                </p>
+
+            </div>
+
         </div>
 
         <textarea
                 id="answerBox"
-                rows="8"
                 placeholder="Type your answer here...">
         </textarea>
 
-        <br><br>
+    </div>
 
-        <button onclick="startVoice()">
+    <!-- ACTIONS -->
+
+    <div class="action-buttons">
+
+        <button
+                class="voice-btn"
+                onclick="startVoice()">
+
             🎤 Voice Input
+
         </button>
 
-        <button onclick="evaluateAnswer()">
-            Evaluate Answer
+        <button
+                class="evaluate-btn"
+                onclick="evaluateAnswer()">
+
+            📊 Evaluate
+
         </button>
 
-        <button onclick="nextQuestion()">
-            Next Question
+        <button
+                class="next-btn"
+                onclick="nextQuestion()">
+
+            ➡ Next
+
         </button>
 
-        <button onclick="goDashboard()">
-            Dashboard
+        <button
+                class="dashboard-btn"
+                onclick="goDashboard()">
+
+            🏠 Dashboard
+
         </button>
+
+    </div>
+
+    <!-- FEEDBACK -->
+
+    <div class="feedback-section">
+
+        <h3>
+
+            AI Feedback
+
+        </h3>
+
+        <div id="feedbackBox">
+
+            Feedback will appear here...
+
+        </div>
 
     </div>
 

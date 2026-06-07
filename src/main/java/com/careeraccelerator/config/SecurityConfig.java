@@ -23,6 +23,14 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
+
+                        // ADMIN ONLY
+                        .requestMatchers(
+                                "/admin/**",
+                                "/api/admin/**"
+                        ).hasRole("ADMIN")
+
+                        // PUBLIC
                         .requestMatchers(
                                 "/",
                                 "/login",
@@ -34,11 +42,11 @@ public class SecurityConfig {
                                 "/interview",
                                 "/jobs",
                                 "/profile",
+                                "/roadmap",
                                 "/api/profile/**",
                                 "/api/auth/**",
                                 "/api/interview/**",
                                 "/api/jobs/**",
-                                "/roadmap",
                                 "/api/roadmap/**",
                                 "/css/**",
                                 "/js/**",
@@ -46,8 +54,10 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .anyRequest()
-                        .permitAll()
-                );
+                        .authenticated()
+                )
+
+                .formLogin(form -> form.disable());
 
         return http.build();
     }

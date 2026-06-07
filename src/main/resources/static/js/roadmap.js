@@ -1,14 +1,20 @@
-// ===============================
-// Career Accelerator Roadmap JS
-// ===============================
-
 async function generateRoadmap() {
 
     const role =
-        document.getElementById("role").value;
+        document.getElementById("role")
+        .value
+        .trim();
 
     const level =
-        document.getElementById("level").value;
+        document.getElementById("level")
+        .value;
+
+    if (!role) {
+
+        alert("Please enter a domain");
+
+        return;
+    }
 
     const roadmapContainer =
         document.getElementById("roadmapResult");
@@ -20,7 +26,7 @@ async function generateRoadmap() {
             <div class="spinner"></div>
 
             <p>
-                Generating your personalized roadmap...
+                Generating Roadmap...
             </p>
 
         </div>
@@ -29,139 +35,108 @@ async function generateRoadmap() {
 
     try {
 
-        const response =
-            await fetch(
-                "/api/roadmap/generate",
-                {
-                    method: "POST",
+        const response = await fetch(
+            "/api/roadmap/generate",
+            {
+                method: "POST",
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-                    body: JSON.stringify({
+                body: JSON.stringify({
 
-                        role: role,
+                    domain: role,
+                    level: level
 
-                        level: level,
-
-                        experience: 0
-
-                    })
-                }
-            );
+                })
+            }
+        );
 
         if (!response.ok) {
 
             throw new Error(
-                "Failed to generate roadmap"
+                "Failed to fetch roadmap"
             );
         }
 
         const data =
             await response.json();
 
+        console.log("API Response:", data);
+
+        let roadmapSteps = [];
+
+        if (Array.isArray(data.roadmap)) {
+
+            roadmapSteps = data.roadmap;
+
+        } else if (typeof data.roadmap === "string") {
+
+            roadmapSteps = data.roadmap
+                .split(/,|\n/)
+                .map(step => step.trim())
+                .filter(step => step.length > 0);
+
+        } else {
+
+            throw new Error(
+                "Invalid roadmap format"
+            );
+        }
+
         let html = `
 
             <div class="roadmap-header">
 
                 <h2>
-
-                    ${data.title}
-
+                    ${role} Roadmap
                 </h2>
 
                 <p>
-
-                    Personalized learning path
-                    for ${role}
-
+                    ${level} Level Learning Path
                 </p>
-
-            </div>
-
-            <div class="progress-section">
-
-                <div class="progress-info">
-
-                    <span>
-                        Progress
-                    </span>
-
-                    <span>
-                        0%
-                    </span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div class="progress-fill"></div>
-
-                </div>
 
             </div>
 
         `;
 
-        if (
-            data.roadmap &&
-            data.roadmap.length > 0
-        ) {
-
-            data.roadmap.forEach(
-                (step, index) => {
-
-                    html += `
-
-                    <div class="step">
-
-                        <div class="step-number">
-
-                            ${index + 1}
-
-                        </div>
-
-                        <div class="step-content">
-
-                            <h3>
-
-                                ${step}
-
-                            </h3>
-
-                            <p>
-
-                                Complete this phase
-                                and master the required
-                                concepts before moving
-                                to the next level.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    `;
-                }
-            );
-
-        } else {
+        roadmapSteps.forEach((step, index) => {
 
             html += `
 
-                <div class="error-box">
+                <div class="step">
 
-                    No roadmap found.
+                    <div class="step-number">
+
+                        ${index + 1}
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <h3>
+
+                            ${step}
+
+                        </h3>
+
+                        <p>
+
+                            Complete this step
+                            before moving to
+                            the next phase.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
             `;
-        }
+        });
 
-        roadmapContainer.innerHTML =
-            html;
+        roadmapContainer.innerHTML = html;
 
         roadmapContainer.scrollIntoView({
 
@@ -169,8 +144,7 @@ async function generateRoadmap() {
 
         });
 
-    }
-    catch (error) {
+    } catch (error) {
 
         console.error(error);
 
@@ -178,18 +152,9 @@ async function generateRoadmap() {
 
             <div class="error-box">
 
-                <h3>
+                Failed to generate roadmap.<br>
 
-                    Error
-
-                </h3>
-
-                <p>
-
-                    Unable to generate roadmap.
-                    Please try again.
-
-                </p>
+                ${error.message}
 
             </div>
 
@@ -197,27 +162,9 @@ async function generateRoadmap() {
     }
 }
 
-// ===============================
-// Dashboard Button
-// ===============================
-
-function goDashboard() {
-
-    window.location.href =
-        "/dashboard";
-}
-
-// ===============================
-// Auto Focus Animation
-// ===============================
-
 window.onload = () => {
 
-    const role =
-        document.getElementById("role");
-
-    if (role) {
-
-        role.focus();
-    }
+    document
+        .getElementById("role")
+        .focus();
 };

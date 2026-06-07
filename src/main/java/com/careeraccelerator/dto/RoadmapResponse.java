@@ -1,16 +1,20 @@
 package com.careeraccelerator.dto;
 
-import lombok.*;
-
 import java.util.List;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class RoadmapResponse {
 
-    private String title;
-
     private List<String> roadmap;
+
+    public RoadmapResponse(List<String> roadmap) {
+        this.roadmap = roadmap;
+    }
+
+    public List<String> getRoadmap() {
+        return roadmap;
+    }
+
+    public void setRoadmap(List<String> roadmap) {
+        this.roadmap = roadmap;
+    }
 }
